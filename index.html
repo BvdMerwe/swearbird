@@ -18,10 +18,17 @@
 </p>
 <h2>It works in JSON too!</h2>
 <p>
-	To grab them in JSON format, use <a href="/api/api/v1/generate/">https://bernardus.co.za/api/api/v1/generate/</a>. 
+	To grab them in JSON format, use <a href="/api/api/v1/generate/">https://bernardus.co.za/api/api/v1/generate/</a>.
 </p>
 <h2>Adding words to the database</h2>
 <p>
-	To add words, POST to /api/api/v1/add/&lt;type&gt;/&lt;word&gt;
+	To add words, POST to /api/api/v1/add/
+	<br/>
+	<br/>
+	@param word - word to add<br/>
+	@param table - table in which word appears - cont_verb, er_nouns, nouns<br/>
+<br/><br/>
+	@error string message<br/>
+	@return obj<br/>
 </p>
 </body>

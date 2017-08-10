@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seed List Generator</title>
+	<style type="text/css">
+		body, html {
+			padding: 0;
+			margin: 0;
+			font-size: 0pt;
+		}
+		textarea {
+			display: inline-block;
+			width: 49%;
+			max-width: 49%;
+			height: 600px;
+			max-height: 200px;
+			font-size: 11pt;
+		}
+		select{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+<form>
+<select id="type">
+	<option value="0">Normal</option>
+	<option value="1">Add er</option>
+	<option value="2">Add ing</option>
+</select>
+<textarea id="input" >
+Type
+words
+here
+</textarea><textarea id="output" placeholder="Output">
+</textarea>
+</form>
+<script>
+	
+	var input = document.getElementById("input");
+	var output = document.getElementById("output");
+
+	console.log(input.value);
+	var timer;
+
+var process = function(){
+	var type = document.getElementById("type").value;
+	var text = input.value;
+	if (text === "") {
+		return;
+	}
+	var result = "";
+	text = text.split('\n');
+
+	if (type == 0) {
+		for (var i = 0; i < text.length; i++) {
+			if (text[i].match(/(\d+|\s+)/g) == null && text[i] != "") {
+				result += "('"+text[i]+"'),\n";
+			}
+		}
+	} else if (type == 1) {
+		for (var i = 0; i < text.length; i++) {
+			if (text[i].match(/(\d+|\s+)/g) == null && text[i] != "") {
+				var suffix = "er";
+				switch (text[i][text[i].length-1]) {
+					case "e": 
+						suffix = "r";
+						break;
+					case "r": 
+						suffix = "";
+						continue;
+				}
+				result += "('"+text[i]+suffix+"'),\n";
+			}
+		}
+	} else if (type == 2) {
+		for (var i = 0; i < text.length; i++) {
+			if (text[i].match(/(\d+|\s+)/g) == null && text[i] != "") {
+				var suffix = "ing";
+				switch (text[i][text[i].length-1]) {
+					case "e": 
+						text[i] = text[i].substr(0, text[i].length-1);
+						break;
+				}
+				result += "('"+text[i]+suffix+"'),\n";
+			}
+		}
+	}
+	output.value = result;
+	console.log(result);
+};
+input.addEventListener("keyup", function(e){
+	window.clearTimeout(timer);
+	timer = setTimeout(function(){
+		process();
+	}, 1000);
+
+	
+}, false);
+
+</script>
+
+</body>
+</html>

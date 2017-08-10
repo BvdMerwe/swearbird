@@ -1,0 +1,12 @@
+START HERE 	-> uncomment line 9 and 10 in config.php to have it work on localhost
+			-> Then paste seed.sql contents into phpmyadmin sql 
+			-> navigate to localhost/<folder>/api/v1/generate -- it should work
+
+LOOK AT THIS TO UNDERSTAND THE API -> very useful but took a while to get my head around
+http://coreymaynard.com/blog/creating-a-restful-api-with-php/
+
+http status codes - needed to return from endpoints
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error
+
+Way to query randoms from database (not using it but still interesting)
+http://jan.kneschke.de/projects/mysql/order-by-rand/ 
